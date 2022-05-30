@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jump: 5
+  jump: 200
   canJump: 0
 --- !u!1 &1495030819
 GameObject:
