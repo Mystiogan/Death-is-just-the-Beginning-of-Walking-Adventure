@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float jump;
 
-    public bool isJumping;
+    public bool canJump = true;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -24,9 +24,10 @@ public class PlayerMovement : MonoBehaviour
         Move = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(speed * Move, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && isJumping == false)
+        if (Input.GetButtonDown("Jump") && canJump)
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            rb.AddForce(new Vector2(rb.velocity.y, jump));
+            canJump = false;
         }
     }
 
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isJumping = false;
+            canJump = true;
         }
     }
 }
